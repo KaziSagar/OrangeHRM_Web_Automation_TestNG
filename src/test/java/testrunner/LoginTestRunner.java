@@ -48,10 +48,8 @@ public class LoginTestRunner extends Setup {
     @Test(priority = 4, description = "Dashboard in the URL")
     public void isURLExists(){
         dashboardPage = new DashboardPage(driver);
-        //WebElement imgProfile = driver.findElement(By.className("oxd-userdropdown-img"));
         String expectedURL = "dashboard";
         String actualURL = driver.getCurrentUrl();
-        //Assert.assertTrue(dashboardPage.imgProfile.isDisplayed());
         Assert.assertTrue(actualURL.contains(expectedURL));
     }
 
@@ -60,65 +58,65 @@ public class LoginTestRunner extends Setup {
 
 
 
-
-
-
-
-
-
-    @Test(priority = 4, description = "Select employee status", enabled = false)
-    public void selectEmploymentStatus() throws InterruptedException {
-        dashboardPage.PIM.get(1).click();
-        Thread.sleep(2000);
-        dashboardPage.dropDowns.get(0).click();
-        dashboardPage.dropDowns.get(0).sendKeys(Keys.ARROW_DOWN);
-        dashboardPage.dropDowns.get(0).sendKeys(Keys.ARROW_DOWN);
-        dashboardPage.dropDowns.get(0).sendKeys(Keys.ENTER);
-        dashboardPage.btnSubmit.click();
-
-        Thread.sleep(3000);
-
-        WebElement txtData = dashboardPage.recordsFound.get(14);
-        String dataActual = txtData.getText();
-        String dataExpected = "Records Found";
-        Assert.assertTrue(dataActual.contains(dataExpected));
-    }
-
-    @Test(priority = 5, description = "Showing employee list", enabled = false)
-    public void listEmployee() {
-        Utils.doScroll(driver);
-
-        WebElement table= driver.findElement(By.className("oxd-table-body"));
-        List<WebElement> allRows= table.findElements(By.cssSelector("[role=row]"));
-        for (WebElement row:allRows) {
-            List<WebElement> cells= row.findElements(By.cssSelector("[role=cell]"));
-            System.out.println(cells.get(5).getText());
-            Assert.assertTrue(cells.get(5).getText().contains("Full-Time Contract"));
-
-        }
-        //Allure.description("Employee list showing properly");
-    }
-
-    @Test(priority = 6, description = "Showing no employee data if not in database", enabled = false)
-    public void noEmployeeData() throws InterruptedException {
-
-        dashboardPage = new DashboardPage(driver);
-        dashboardPage.PIM.get(1).click();
-        Thread.sleep(2000);
-        dashboardPage.dropDowns.get(0).click();
-        dashboardPage.dropDowns.get(0).sendKeys(Keys.ARROW_DOWN);
-        dashboardPage.dropDowns.get(0).sendKeys(Keys.ARROW_DOWN);
-        dashboardPage.dropDowns.get(0).sendKeys(Keys.ARROW_DOWN);
-        dashboardPage.dropDowns.get(0).sendKeys(Keys.ARROW_DOWN);
-        dashboardPage.dropDowns.get(0).sendKeys(Keys.ARROW_DOWN);
-        dashboardPage.dropDowns.get(0).sendKeys(Keys.ARROW_DOWN);
-        dashboardPage.dropDowns.get(0).sendKeys(Keys.ENTER);
-        Thread.sleep(2000);
-        dashboardPage.btnSubmit.click();
-
-        List <WebElement> records = driver.findElements(By.className("oxd-text--span"));
-        String dataStatusActual = records.get(11).getText();
-        String dataStatusExpected = "No Records Found";
-        Assert.assertEquals(dataStatusActual, dataStatusExpected);
-    }
+//
+//
+//
+//
+//
+//
+//    @Test(priority = 4, description = "Select employee status", enabled = false)
+//    public void selectEmploymentStatus() throws InterruptedException {
+//        dashboardPage.PIM.get(1).click();
+//        Thread.sleep(2000);
+//        dashboardPage.dropDowns.get(0).click();
+//        dashboardPage.dropDowns.get(0).sendKeys(Keys.ARROW_DOWN);
+//        dashboardPage.dropDowns.get(0).sendKeys(Keys.ARROW_DOWN);
+//        dashboardPage.dropDowns.get(0).sendKeys(Keys.ENTER);
+//        dashboardPage.btnSubmit.click();
+//
+//        Thread.sleep(3000);
+//
+//        WebElement txtData = dashboardPage.recordsFound.get(14);
+//        String dataActual = txtData.getText();
+//        String dataExpected = "Records Found";
+//        Assert.assertTrue(dataActual.contains(dataExpected));
+//    }
+//
+//    @Test(priority = 5, description = "Showing employee list", enabled = false)
+//    public void listEmployee() {
+//        Utils.doScroll(driver);
+//
+//        WebElement table= driver.findElement(By.className("oxd-table-body"));
+//        List<WebElement> allRows= table.findElements(By.cssSelector("[role=row]"));
+//        for (WebElement row:allRows) {
+//            List<WebElement> cells= row.findElements(By.cssSelector("[role=cell]"));
+//            System.out.println(cells.get(5).getText());
+//            Assert.assertTrue(cells.get(5).getText().contains("Full-Time Contract"));
+//
+//        }
+//        //Allure.description("Employee list showing properly");
+//    }
+//
+//    @Test(priority = 6, description = "Showing no employee data if not in database", enabled = false)
+//    public void noEmployeeData() throws InterruptedException {
+//
+//        dashboardPage = new DashboardPage(driver);
+//        dashboardPage.PIM.get(1).click();
+//        Thread.sleep(2000);
+//        dashboardPage.dropDowns.get(0).click();
+//        dashboardPage.dropDowns.get(0).sendKeys(Keys.ARROW_DOWN);
+//        dashboardPage.dropDowns.get(0).sendKeys(Keys.ARROW_DOWN);
+//        dashboardPage.dropDowns.get(0).sendKeys(Keys.ARROW_DOWN);
+//        dashboardPage.dropDowns.get(0).sendKeys(Keys.ARROW_DOWN);
+//        dashboardPage.dropDowns.get(0).sendKeys(Keys.ARROW_DOWN);
+//        dashboardPage.dropDowns.get(0).sendKeys(Keys.ARROW_DOWN);
+//        dashboardPage.dropDowns.get(0).sendKeys(Keys.ENTER);
+//        Thread.sleep(2000);
+//        dashboardPage.btnSubmit.click();
+//
+//        List <WebElement> records = driver.findElements(By.className("oxd-text--span"));
+//        String dataStatusActual = records.get(11).getText();
+//        String dataStatusExpected = "No Records Found";
+//        Assert.assertEquals(dataStatusActual, dataStatusExpected);
+//    }
 }

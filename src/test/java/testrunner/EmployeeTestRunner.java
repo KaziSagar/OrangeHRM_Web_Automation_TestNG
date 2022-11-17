@@ -164,6 +164,7 @@ public class EmployeeTestRunner extends Setup {
             List data = Utils.readJSONArray("./src/test/resources/Users.json");
             JSONObject userObj = (JSONObject) data.get(i);
             String userID = (String) userObj.get("userID");
+            Thread.sleep(2000);
             dashboardPage.searchBar.get(1).click();
             dashboardPage.searchBar.get(1).sendKeys(userID);
             dashboardPage.btnSubmit.click();
@@ -177,7 +178,7 @@ public class EmployeeTestRunner extends Setup {
 
             dashboardPage.searchBar.get(1).click();
 
-            Thread.sleep(1000);
+            Thread.sleep(2000);
             dashboardPage.searchBar.get(1).sendKeys(Keys.CONTROL, "A");
 
             //Thread.sleep(1000);

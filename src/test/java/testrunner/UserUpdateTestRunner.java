@@ -43,7 +43,7 @@ public class UserUpdateTestRunner extends Setup {
         Assert.assertTrue(urlActual.contains(urlExpected));
     }
 
-    @Test(priority = 1)
+    @Test(description = "Updated employee information")
     public void updateUserInfo() throws InterruptedException {
         List <WebElement> headerTitle = driver.findElements(By.className("orangehrm-main-title"));
         Utils.waitForElement(driver, headerTitle.get(0), 50);
@@ -52,15 +52,16 @@ public class UserUpdateTestRunner extends Setup {
 
             employeePage.radioButton.get(0).click();
 
+            Thread.sleep(1000);
             employeePage.dropdownBox.get(0).click();
             employeePage.dropdownBox.get(0).sendKeys("b");
             employeePage.dropdownBox.get(0).sendKeys(Keys.ARROW_DOWN);
             employeePage.dropdownBox.get(0).sendKeys(Keys.ARROW_DOWN);
             employeePage.dropdownBox.get(0).sendKeys(Keys.ENTER);
 
+            Thread.sleep(1000);
             employeePage.dropdownBox.get(1).sendKeys("s");
             employeePage.dropdownBox.get(1).sendKeys(Keys.ENTER);
-
 
             List <WebElement> buttons = driver.findElements(By.cssSelector("[type = submit]"));
             buttons.get(1).click();
