@@ -3,13 +3,11 @@ package testrunner;
 import io.qameta.allure.Allure;
 import org.openqa.selenium.*;
 import org.testng.Assert;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.Test;
 import pages.DashboardPage;
 import pages.LoginPage;
 import setup.Setup;
-import utils.Utils;
-
-import java.util.List;
 
 public class LoginTestRunner extends Setup {
 
@@ -29,20 +27,21 @@ public class LoginTestRunner extends Setup {
 
     @Test(priority = 2, description = "Admin can login successfully")
     public void doLogin(){
-        //driver.get("https://opensource-demo.orangehrmlive.com");
+
         loginPage = new LoginPage(driver);
         loginPage.doLogin("admin", "admin123");
 
         String urlActual = driver.getCurrentUrl();
         String urlExpected = "index";
         Assert.assertTrue(urlActual.contains(urlExpected));
+        Allure.description("Admin can login successfully");
     }
 
     @Test(priority = 3, description = "Admin profile image showing")
     public void isProfileImageExists(){
         dashboardPage = new DashboardPage(driver);
-       //WebElement imgProfile = driver.findElement(By.className("oxd-userdropdown-img"));
         Assert.assertTrue(dashboardPage.imgProfile.isDisplayed());
+        Allure.description("Admin profile image showing");
     }
 
     @Test(priority = 4, description = "Dashboard in the URL")
@@ -51,72 +50,14 @@ public class LoginTestRunner extends Setup {
         String expectedURL = "dashboard";
         String actualURL = driver.getCurrentUrl();
         Assert.assertTrue(actualURL.contains(expectedURL));
+        Allure.description("Dashboard in the URL");
     }
 
-
-
-
-
-
-//
-//
-//
-//
-//
-//
-//    @Test(priority = 4, description = "Select employee status", enabled = false)
-//    public void selectEmploymentStatus() throws InterruptedException {
-//        dashboardPage.PIM.get(1).click();
-//        Thread.sleep(2000);
-//        dashboardPage.dropDowns.get(0).click();
-//        dashboardPage.dropDowns.get(0).sendKeys(Keys.ARROW_DOWN);
-//        dashboardPage.dropDowns.get(0).sendKeys(Keys.ARROW_DOWN);
-//        dashboardPage.dropDowns.get(0).sendKeys(Keys.ENTER);
-//        dashboardPage.btnSubmit.click();
-//
-//        Thread.sleep(3000);
-//
-//        WebElement txtData = dashboardPage.recordsFound.get(14);
-//        String dataActual = txtData.getText();
-//        String dataExpected = "Records Found";
-//        Assert.assertTrue(dataActual.contains(dataExpected));
-//    }
-//
-//    @Test(priority = 5, description = "Showing employee list", enabled = false)
-//    public void listEmployee() {
-//        Utils.doScroll(driver);
-//
-//        WebElement table= driver.findElement(By.className("oxd-table-body"));
-//        List<WebElement> allRows= table.findElements(By.cssSelector("[role=row]"));
-//        for (WebElement row:allRows) {
-//            List<WebElement> cells= row.findElements(By.cssSelector("[role=cell]"));
-//            System.out.println(cells.get(5).getText());
-//            Assert.assertTrue(cells.get(5).getText().contains("Full-Time Contract"));
-//
-//        }
-//        //Allure.description("Employee list showing properly");
-//    }
-//
-//    @Test(priority = 6, description = "Showing no employee data if not in database", enabled = false)
-//    public void noEmployeeData() throws InterruptedException {
-//
-//        dashboardPage = new DashboardPage(driver);
-//        dashboardPage.PIM.get(1).click();
-//        Thread.sleep(2000);
-//        dashboardPage.dropDowns.get(0).click();
-//        dashboardPage.dropDowns.get(0).sendKeys(Keys.ARROW_DOWN);
-//        dashboardPage.dropDowns.get(0).sendKeys(Keys.ARROW_DOWN);
-//        dashboardPage.dropDowns.get(0).sendKeys(Keys.ARROW_DOWN);
-//        dashboardPage.dropDowns.get(0).sendKeys(Keys.ARROW_DOWN);
-//        dashboardPage.dropDowns.get(0).sendKeys(Keys.ARROW_DOWN);
-//        dashboardPage.dropDowns.get(0).sendKeys(Keys.ARROW_DOWN);
-//        dashboardPage.dropDowns.get(0).sendKeys(Keys.ENTER);
-//        Thread.sleep(2000);
-//        dashboardPage.btnSubmit.click();
-//
-//        List <WebElement> records = driver.findElements(By.className("oxd-text--span"));
-//        String dataStatusActual = records.get(11).getText();
-//        String dataStatusExpected = "No Records Found";
-//        Assert.assertEquals(dataStatusActual, dataStatusExpected);
-//    }
+    @AfterTest
+    public void logout() throws InterruptedException {
+        DashboardPage dashboardPage = new DashboardPage(driver);
+        dashboardPage.btnProfileIcon.click();
+        driver.findElement(By.partialLinkText("Logout")).click();
+        Allure.description("Admin can logout successfully");
+    }
 }

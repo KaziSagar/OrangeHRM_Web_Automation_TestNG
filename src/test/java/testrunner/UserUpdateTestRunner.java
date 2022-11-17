@@ -1,5 +1,6 @@
 package testrunner;
 
+import io.qameta.allure.Allure;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.ParseException;
 import org.openqa.selenium.By;
@@ -41,6 +42,8 @@ public class UserUpdateTestRunner extends Setup {
         String urlActual = driver.getCurrentUrl();
         String urlExpected = "viewPersonalDetails";
         Assert.assertTrue(urlActual.contains(urlExpected));
+
+        Allure.description("Employee can login successfully");
     }
 
     @Test(description = "Updated employee information")
@@ -74,13 +77,16 @@ public class UserUpdateTestRunner extends Setup {
             String expectedMaritalStatus = "Single";
             Assert.assertTrue(actualMaritalStatus.contains(expectedMaritalStatus));
 
+            Allure.description("Employee can update own information successfully");
         }
     }
 
     @AfterTest
-    public void logout(){
+    public void logout() throws InterruptedException {
         DashboardPage dashboardPage = new DashboardPage(driver);
         dashboardPage.btnProfileIcon.click();
         driver.findElement(By.partialLinkText("Logout")).click();
+        Thread.sleep(2000);
+        Allure.description("Employee can logout successfully");
     }
 }

@@ -25,9 +25,6 @@ public class DashboardPage {
     @FindBy(className = "oxd-userdropdown-tab")
     public WebElement btnProfileIcon;
 
-//    @FindBy(className = "oxd-input--active")
-//    public WebElement searchBar;
-
     @FindBy(className = "oxd-input")
     public List <WebElement> searchBar;
 

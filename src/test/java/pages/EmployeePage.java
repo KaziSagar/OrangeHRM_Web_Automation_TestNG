@@ -57,12 +57,10 @@ public class EmployeePage {
         txtUserCreds.get(4).sendKeys(Keys.CONTROL, "A");
         txtUserCreds.get(4).sendKeys(employeeID);
 
-
-        Thread.sleep(3000);
+        Thread.sleep(2000);
         txtUserCreds.get(5).sendKeys(userName);
         txtUserCreds.get(6).sendKeys(password);
         txtUserCreds.get(7).sendKeys(confirmPassword);
         btnSubmit.click();
     }
-
 }

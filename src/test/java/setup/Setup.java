@@ -35,13 +35,11 @@ public class Setup {
             } catch (Exception exception) {
                 System.out.println(exception.toString());
             }
-
         }
-
     }
 
-//    @AfterTest
-//    public void quitBrowser(){
-//        driver.close();
-//    }
+    @AfterTest
+    public void quitBrowser(){
+        driver.close();
+    }
 }
