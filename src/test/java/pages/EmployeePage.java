@@ -34,6 +34,9 @@ public class EmployeePage {
     @FindBy(className = "oxd-select-text-input")
     public List <WebElement>  dropdownBox;
 
+    @FindBy(className = "oxd-radio-input")
+    public List <WebElement> radioButton;
+
     @FindBy(className = "oxd-input-field-error-message")
     public WebElement lblValidationError;
 

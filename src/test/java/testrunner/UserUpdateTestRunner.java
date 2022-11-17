@@ -22,7 +22,7 @@ public class UserUpdateTestRunner extends Setup {
     EmployeePage employeePage;
 
     //@BeforeTest
-    @Test
+    @BeforeTest
     public void doLogin() throws IOException, ParseException {
         driver.get("https://opensource-demo.orangehrmlive.com");
 
@@ -43,27 +43,43 @@ public class UserUpdateTestRunner extends Setup {
         Assert.assertTrue(urlActual.contains(urlExpected));
     }
 
-    @Test(priority = 1, enabled = false)
+    @Test(priority = 1)
     public void updateUserInfo() throws InterruptedException {
         List <WebElement> headerTitle = driver.findElements(By.className("orangehrm-main-title"));
         Utils.waitForElement(driver, headerTitle.get(0), 50);
         if(headerTitle.get(0).isDisplayed()){
             Thread.sleep(1000);
+
+            employeePage.radioButton.get(0).click();
+
             employeePage.dropdownBox.get(0).click();
             employeePage.dropdownBox.get(0).sendKeys("b");
             employeePage.dropdownBox.get(0).sendKeys(Keys.ARROW_DOWN);
             employeePage.dropdownBox.get(0).sendKeys(Keys.ARROW_DOWN);
             employeePage.dropdownBox.get(0).sendKeys(Keys.ENTER);
 
+            employeePage.dropdownBox.get(1).sendKeys("s");
+            employeePage.dropdownBox.get(1).sendKeys(Keys.ENTER);
+
+
             List <WebElement> buttons = driver.findElements(By.cssSelector("[type = submit]"));
             buttons.get(1).click();
+
+            String actualNationality = employeePage.dropdownBox.get(0).getText();
+            String expectedNationality = "Bangladeshi";
+            Assert.assertTrue(actualNationality.contains(expectedNationality));
+
+            String actualMaritalStatus = employeePage.dropdownBox.get(1).getText();
+            String expectedMaritalStatus = "Single";
+            Assert.assertTrue(actualMaritalStatus.contains(expectedMaritalStatus));
+
         }
     }
 
-//    @AfterTest
-//    public void logout(){
-//        DashboardPage dashboardPage = new DashboardPage(driver);
-//        dashboardPage.btnProfileIcon.click();
-//        driver.findElement(By.partialLinkText("Logout")).click();
-//    }
+    @AfterTest
+    public void logout(){
+        DashboardPage dashboardPage = new DashboardPage(driver);
+        dashboardPage.btnProfileIcon.click();
+        driver.findElement(By.partialLinkText("Logout")).click();
+    }
 }
