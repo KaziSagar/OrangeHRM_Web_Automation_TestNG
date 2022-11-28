@@ -28,13 +28,39 @@ YouTube: https://youtu.be/Z3SpJqNaAYc
 
 ~~ Allure report ~~
 
-Overview: https://user-images.githubusercontent.com/40532866/202601614-ebd63cac-b3ec-466a-9560-7c3e382f05b8.png
-Suites: https://user-images.githubusercontent.com/40532866/202602177-cb62d17f-4ff7-4044-a48b-15081a307f96.png
-Graphs: https://user-images.githubusercontent.com/40532866/202602316-77bd8cca-78d8-481a-9613-79c213a5e1e9.png
-Timeline: https://user-images.githubusercontent.com/40532866/202602477-b7f32610-2683-4e9f-b65e-3e6636b614ca.png
-Behaviors: https://user-images.githubusercontent.com/40532866/202602666-1ac4e505-0546-4554-8f6c-72563728d2bb.png
-Packages: https://user-images.githubusercontent.com/40532866/202602828-c77fba66-8ffa-4492-8bdd-0ad28ac97f7d.png
+Overview:
+
+![image](https://user-images.githubusercontent.com/40532866/204179043-aa7896cf-70e6-4c92-a639-9d4659b8c039.png)
+
+
+Suites:
+
+![image](https://user-images.githubusercontent.com/40532866/204179150-5877fd0c-12c9-48c7-b439-1e1eac28b235.png)
+
+
+Graphs:
+
+![image](https://user-images.githubusercontent.com/40532866/204179198-21c31375-0175-40d2-bd47-34b0e91f68ea.png)
+
+
+Timeline:
+
+![image](https://user-images.githubusercontent.com/40532866/204179252-c7793869-77ef-4e7a-8ab7-ddff02fb1632.png)
+
+
+Behaviors:
+
+![image](https://user-images.githubusercontent.com/40532866/204179308-78dd19d0-b4c5-4b47-bd73-f1198a3a87f0.png)
+
+
+Packages:
+
+![image](https://user-images.githubusercontent.com/40532866/204179372-e39c34ed-1094-4cc3-a88b-466db66ec05a.png)
+
 
 ~~ TestNG report ~~
 
-Overview: https://user-images.githubusercontent.com/40532866/202603202-d2b82a77-7e8e-402d-ba04-65db69f33739.png
+Overview:
+
+![image](https://user-images.githubusercontent.com/40532866/204179423-6c564c7c-37e1-45c8-a44d-7422ff4a4cc4.png)
+
